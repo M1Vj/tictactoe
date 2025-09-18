@@ -13,3 +13,7 @@ export function calculateWinner(board: Board): Player | null {
     }
     return null;
 }
+
+export function isDraw(board: Board): boolean {
+    return board.every(cell => cell !== null) && !calculateWinner(board) === null;
+}
