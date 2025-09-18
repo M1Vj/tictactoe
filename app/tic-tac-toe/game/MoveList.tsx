@@ -19,11 +19,11 @@ export default function MoveList({history, currentMove, onJumpTo}: MoveListProps
                         <button
                             type="button"
                             onClick={() => onJumpTo(index)}
-                            aria-current={isCurrent ? 'true' : undefined}
+                            aria-current={isCurrent ? 'step' : undefined}
 
                             className={
                                 isCurrent ? 'rounded px-3 py-1 border font-semibold'
-                                    : 'rounded px-3 py-1 border hover:bg-gray-100'
+                                          : 'rounded px-3 py-1 border hover:bg-gray-100'
                             }
                         >
                             {isCurrent ? <span>Current : {label}</span>: label}

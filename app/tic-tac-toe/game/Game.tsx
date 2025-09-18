@@ -17,6 +17,7 @@ export default function Game() {
     const gameOver = winner || draw;
 
     function handlePlay(index:number) {
+        if (gameOver) return;
         if (currentSquares[index] !== null) return;
         const nextSquares = currentSquares.slice() as Cell[];
         nextSquares[index] = xIsNext ? 'X' : 'O';
@@ -29,11 +30,24 @@ export default function Game() {
     function jumpTo(moveIndex:number) {
         setCurrentMove(moveIndex);
     }
+
+    function resetGame() {
+        setHistory([emptyBoard]);
+        setCurrentMove(0);
+    }
+
     return (
         <div>
             <div>Next player: {xIsNext ? 'X' : 'O'}</div>
             <BoardT squares={currentSquares} onPlay={handlePlay} />
             <Status winner={winner} xIsNext={xIsNext} draw={draw} />
+            {gameOver && (
+                <div className="mt-3">
+                    <button type="button" onClick={resetGame} className="rounded px-3 py-1 border hover:bg-gray-100">
+                        Restart
+                    </button>
+                </div>
+            )}
             <MoveList history={history} currentMove={currentMove} onJumpTo={jumpTo} />
         </div>
     )
