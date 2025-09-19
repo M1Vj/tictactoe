@@ -43,7 +43,6 @@ export default function Game() {
                 <h1 className="text-2xl md:text-3xl font-bold tracking-tight">
                     Tic‑Tac‑Toe
                 </h1>
-                {gameOver && (
                     <button
                         type="button"
                         onClick={resetGame}
@@ -51,10 +50,10 @@ export default function Game() {
                     >
                         Restart
                     </button>
-                )}
+
             </header>
 
-            <div>
+            <div className="flex flex-col md:flex-row gap-4">
                 <div>
                     <Status winner={winner} xIsNext={xIsNext} draw={draw} />
                     <div className="col-span-2">
