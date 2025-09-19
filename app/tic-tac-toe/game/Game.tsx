@@ -43,11 +43,14 @@ export default function Game() {
                 <h1 className="text-2xl md:text-3xl font-bold tracking-tight">
                     Tic‑Tac‑Toe
                 </h1>
-                    <button
-                        type="button"
-                        onClick={resetGame}
-                        className="rounded-lg px-3 py-1.5 border border-gray-300/70 hover:bg-gray-100 dark:hover:bg-neutral-800/60 transition-colors"
-                    >
+                <button
+                    type="button"
+                    onClick={resetGame}
+                    className="rounded-lg px-3 py-1.5 border
+                        border-gray-300/70
+                        hover:bg-gray-100
+                        dark:hover:bg-neutral-800/60
+                          transition-colors">
                         Restart
                     </button>
 

@@ -13,9 +13,9 @@ type BoardProps = {
 export default function Board({squares, onPlay, gameOver = false}: BoardProps) {
     return(
         <div
-            className="mt-2 block grid grid-cols-3 gap-[var(--gap)] place-items-center"
+            className="mt-2 grid gap-[var(--gap)]"
             style={{
-                '--board-size': 'min(90vmin, 28rem)',
+                '--board-size': 'min(73vmin, 28rem)',
                 '--gap': '0.75rem',
                 '--tile': 'calc((var(--board-size) - (var(--gap) * 2)) / 3)',
                 width: 'var(--board-size)',
