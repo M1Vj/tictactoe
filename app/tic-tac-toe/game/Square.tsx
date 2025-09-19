@@ -3,9 +3,6 @@
 import { motion } from 'framer-motion';
 import type { Cell } from '../lib/ticTacToe';
 
-// Square renders a single cell in the board. It shows the current mark ('X' | 'O')
-// and handles hover/tap animation. It supports a disabled state.
-
 type SquareProps = {
     value: Cell;
     onClick: () => void;
@@ -37,7 +34,7 @@ export default function Square({ value, onClick, disabled }: SquareProps) {
                 'disabled:opacity-60 disabled:cursor-not-allowed',
             ].join(' ')}
         >
-            {value ?? ''}
+            {value ?? '\u00A0'}
         </motion.button>
     );
 }
