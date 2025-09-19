@@ -1,9 +1,10 @@
 'use client';
-import {useState} from 'react';
-import {Board, calculateWinner, Cell, isDraw} from "../lib/ticTacToe";
-import BoardT from "./Board";
-import Status from "./Status";
-import MoveList from "./MoveList";
+import { useState } from 'react';
+import { calculateWinner, isDraw } from '../lib/ticTacToe';
+import type { Board, Cell } from '../lib/ticTacToe';
+import BoardT from './Board';
+import Status from './Status';
+import MoveList from './MoveList';
 
 const emptyBoard: Board = Array<Cell>(9).fill(null);
 
@@ -16,7 +17,7 @@ export default function Game() {
     const draw = isDraw(currentSquares);
     const gameOver = winner || draw;
 
-    function handlePlay(index:number) {
+    function handlePlay(index: number) {
         if (gameOver) return;
         if (currentSquares[index] !== null) return;
         const nextSquares = currentSquares.slice() as Cell[];
@@ -27,7 +28,7 @@ export default function Game() {
         setCurrentMove(updated.length - 1);
     }
 
-    function jumpTo(moveIndex:number) {
+    function jumpTo(moveIndex: number) {
         setCurrentMove(moveIndex);
     }
 
@@ -37,19 +38,35 @@ export default function Game() {
     }
 
     return (
-        <div>
-            <div>Next player: {xIsNext ? 'X' : 'O'}</div>
-            <BoardT squares={currentSquares} onPlay={handlePlay} />
-            <Status winner={winner} xIsNext={xIsNext} draw={draw} />
-            {gameOver && (
-                <div className="mt-3">
-                    <button type="button" onClick={resetGame} className="rounded px-3 py-1 border hover:bg-gray-100">
+        <div className="mx-auto max-w-3xl p-4">
+            <header className="mb-4 flex items-center justify-between">
+                <h1 className="text-2xl md:text-3xl font-bold tracking-tight">
+                    Tic‑Tac‑Toe
+                </h1>
+                {gameOver && (
+                    <button
+                        type="button"
+                        onClick={resetGame}
+                        className="rounded-lg px-3 py-1.5 border border-gray-300/70 hover:bg-gray-100 dark:hover:bg-neutral-800/60 transition-colors"
+                    >
                         Restart
                     </button>
-                </div>
-            )}
-            <MoveList history={history} currentMove={currentMove} onJumpTo={jumpTo} />
-        </div>
-    )
+                )}
+            </header>
 
+            <div>
+                <div>
+                    <Status winner={winner} xIsNext={xIsNext} draw={draw} />
+                    <div className="col-span-2">
+                        <BoardT squares={currentSquares} onPlay={handlePlay} gameOver={!!winner || draw} />
+                    </div>
+                </div>
+
+                <aside className="md:pt-8">
+                    <h2 className="mb-2 text-sm font-medium text-gray-500">Move history</h2>
+                    <MoveList history={history} currentMove={currentMove} onJumpTo={jumpTo} />
+                </aside>
+            </div>
+        </div>
+    );
 }
