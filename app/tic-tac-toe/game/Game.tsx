@@ -53,7 +53,7 @@ export default function Game() {
 
             </header>
 
-            <div className="flex flex-col md:flex-row gap-4">
+            <div className="flex flex-col md:flex-row gap-10">
                 <div>
                     <Status winner={winner} xIsNext={xIsNext} draw={draw} />
                     <div className="col-span-2">
@@ -61,7 +61,7 @@ export default function Game() {
                     </div>
                 </div>
 
-                <aside className="md:pt-8">
+                <aside>
                     <h2 className="mb-2 text-sm font-medium text-gray-500">Move history</h2>
                     <MoveList history={history} currentMove={currentMove} onJumpTo={jumpTo} />
                 </aside>
