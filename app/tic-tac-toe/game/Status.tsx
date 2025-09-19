@@ -10,13 +10,20 @@ type StatusProps = {
 };
 
 export default function Status({ winner, xIsNext, draw }: StatusProps) {
-    let message: string;
-    if (winner) message = `Winner: ${winner}`;
-    else if (draw) message = "It's a draw!";
-    else message = `Next player: ${xIsNext ? 'X' : 'O'}`;
+    let message: string; let tone: 'neutral' | 'win' | 'draw' = 'neutral';
+    if (winner) { tone = 'win'; message = `Winner: ${winner}`; }
+    else if (draw) { tone = 'draw'; message = "It's a draw!"; }
+    else { message = `Next player: ${xIsNext ? 'X' : 'O'}`; }
+
+    const toneClass =
+        tone === 'win'
+            ? 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30'
+            : tone === 'draw'
+                ? 'bg-amber-500/15 text-amber-700 dark:text-amber-300 border-amber-500/30'
+                : 'bg-blue-500/10 text-blue-700 dark:text-blue-300 border-blue-500/30';
 
     return (
-        <div role="status" aria-live="polite" className="mb-4 min-h-[1.5rem]">
+        <div role="status" aria-live="polite" className="mb-4 min-h-[2.25rem]">
             <AnimatePresence mode="wait">
                 <motion.div
                     key={message}
@@ -24,8 +31,14 @@ export default function Status({ winner, xIsNext, draw }: StatusProps) {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -4 }}
                     transition={{ duration: 0.15 }}
-                    className="text-lg font-semibold"
+                    className={'inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-sm font-medium ' + toneClass}
                 >
+          <span
+              className={
+                  'inline-block h-2.5 w-2.5 rounded-full ' +
+                  (tone === 'win' ? 'bg-emerald-500' : tone === 'draw' ? 'bg-amber-500' : 'bg-blue-500')
+              }
+          />
                     {message}
                 </motion.div>
             </AnimatePresence>

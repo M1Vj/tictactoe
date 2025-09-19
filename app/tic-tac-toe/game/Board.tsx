@@ -18,6 +18,10 @@ export default function Board({squares, onPlay, gameOver = false}: BoardProps) {
                 '--board-size': 'min(90vmin, 28rem)',
                 '--gap': '0.75rem',
                 '--tile': 'calc((var(--board-size) - (var(--gap) * 2)) / 3)',
+                width: 'var(--board-size)',
+                height: 'var(--board-size)',
+                gridTemplateColumns: 'repeat(3, var(--tile))',
+                gridTemplateRows: 'repeat(3, var(--tile))',
             } as React.CSSProperties}
         >
             {Array.from({length: 9}, (_, i) => (
