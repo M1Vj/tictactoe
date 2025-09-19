@@ -43,18 +43,20 @@ export default function Game() {
                 <h1 className="text-2xl md:text-3xl font-bold tracking-tight">
                     Tic‑Tac‑Toe
                 </h1>
-                {gameOver && (
-                    <button
-                        type="button"
-                        onClick={resetGame}
-                        className="rounded-lg px-3 py-1.5 border border-gray-300/70 hover:bg-gray-100 dark:hover:bg-neutral-800/60 transition-colors"
-                    >
+                <button
+                    type="button"
+                    onClick={resetGame}
+                    className="rounded-lg px-3 py-1.5 border
+                        border-gray-300/70
+                        hover:bg-gray-100
+                        dark:hover:bg-neutral-800/60
+                          transition-colors">
                         Restart
                     </button>
-                )}
+
             </header>
 
-            <div>
+            <div className="flex flex-col md:flex-row gap-10">
                 <div>
                     <Status winner={winner} xIsNext={xIsNext} draw={draw} />
                     <div className="col-span-2">
@@ -62,7 +64,7 @@ export default function Game() {
                     </div>
                 </div>
 
-                <aside className="md:pt-8">
+                <aside>
                     <h2 className="mb-2 text-sm font-medium text-gray-500">Move history</h2>
                     <MoveList history={history} currentMove={currentMove} onJumpTo={jumpTo} />
                 </aside>

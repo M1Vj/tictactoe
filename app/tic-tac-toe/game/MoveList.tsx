@@ -44,12 +44,11 @@ export default function MoveList({history, currentMove, onJumpTo}: MoveListProps
                         aria-current={isCurrent ? 'step': undefined}
                         className={
                             (isCurrent
-                                ? 'font-semibold bg-blue-50 dark:bg-blue-950/30'
-                                : 'hover:bg-gray-100 dark:hover:bg-neutral-800/60'
-                            ) +
-                            ' rounded px-3 py-1 border border-gray-300/70 transition-colors'
+                                ? 'font-semibold bg-blue-500/10 text-blue-700 dark:text-blue-300 border-blue-500/30 '
+                                : 'hover:bg-gray-100 dark:hover:bg-neutral-800/60 ')
+                            + 'rounded-full px-3 py-1.5 border border-gray-300/70 transition-colors text-sm'
                         }>
-                        {isCurrent ? <span>Current - {label}</span> : label}
+                        {isCurrent ? <span>Current move - #{index}</span> : label}
                     </button>
                 </motion.li>
             )
