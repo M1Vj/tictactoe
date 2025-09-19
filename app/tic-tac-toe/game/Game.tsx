@@ -1,21 +1,29 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { calculateWinner, isDraw } from '../lib/ticTacToe';
 import type { Board, Cell } from '../lib/ticTacToe';
 import BoardT from './Board';
 import Status from './Status';
 import MoveList from './MoveList';
+import WinnerOverlay from './WinnerOverlay';
 
 const emptyBoard: Board = Array<Cell>(9).fill(null);
 
 export default function Game() {
     const [history, setHistory] = useState<Board[]>([emptyBoard]);
     const [currentMove, setCurrentMove] = useState<number>(0);
+    const [showOverlay, setShowOverlay] = useState<boolean>(false);
+
     const currentSquares: Board = history[currentMove];
     const xIsNext: boolean = currentMove % 2 === 0;
     const winner = calculateWinner(currentSquares);
     const draw = isDraw(currentSquares);
     const gameOver = winner || draw;
+
+    useEffect(() => {
+        if (gameOver) setShowOverlay(true);
+        else setShowOverlay(false);
+    }, [gameOver]);
 
     function handlePlay(index: number) {
         if (gameOver) return;
@@ -35,6 +43,7 @@ export default function Game() {
     function resetGame() {
         setHistory([emptyBoard]);
         setCurrentMove(0);
+        setShowOverlay(false);
     }
 
     return (
@@ -69,6 +78,14 @@ export default function Game() {
                     <MoveList history={history} currentMove={currentMove} onJumpTo={jumpTo} />
                 </aside>
             </div>
+
+            <WinnerOverlay
+                open={showOverlay}
+                winner={winner}
+                draw={draw}
+                onRestart={resetGame}
+                onClose={() => setShowOverlay(false)}
+            />
         </div>
     );
 }
