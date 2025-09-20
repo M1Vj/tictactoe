@@ -74,7 +74,7 @@ export default function Game() {
                 </div>
 
                 <aside>
-                    <h2 className="mb-2 text-sm font-medium text-gray-500">Move history</h2>
+                    <h2 className="mb-2 text-sm font-medium text-blue-700 dark:text-gray-500 ">Move history</h2>
                     <MoveList history={history} currentMove={currentMove} onJumpTo={jumpTo} />
                 </aside>
             </div>

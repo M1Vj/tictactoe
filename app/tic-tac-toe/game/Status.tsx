@@ -19,8 +19,8 @@ export default function Status({ winner, xIsNext, draw }: StatusProps) {
         tone === 'win'
             ? 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30'
             : tone === 'draw'
-                ? 'bg-amber-500/15 text-amber-700 dark:text-amber-300 border-amber-500/30'
-                : 'bg-blue-500/10 text-blue-700 dark:text-blue-300 border-blue-500/30';
+                ? 'bg-amber-500/25 text-amber-700 dark:text-amber-300 border-amber-500/30'
+                : 'bg-blue-400/40 text-blue-800 dark:text-blue-400 border-blue-500/30';
 
     return (
         <div role="status" aria-live="polite" className="mb-4 min-h-[2.25rem]">
