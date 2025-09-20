@@ -25,7 +25,11 @@ export default function Square({ value, onClick, disabled }: SquareProps) {
                 // visuals
                 'rounded-xl border border-gray-300/70 shadow-sm',
                 'bg-white/80 dark:bg-neutral-900/60 backdrop-blur',
+<<<<<<< HEAD
                 'text-5xl md:text-7xl font-bold',
+=======
+                'text-5xl md:text-7xl font-bold text-gray-700 dark:text-gray-300',
+>>>>>>> light-mode-bug
                 // interactions
                 'transition-colors focus:outline-none',
                 'focus-visible:ring-2 focus-visible:ring-blue-500/70',

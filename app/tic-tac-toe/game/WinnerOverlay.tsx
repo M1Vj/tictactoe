@@ -69,7 +69,11 @@ export default function WinnerOverlay({ open, winner, draw, onRestart, onClose }
             >
               {tone === 'win' ? 'Game Over' : 'Draw'}
             </div>
+<<<<<<< HEAD
             <h2 className="text-2xl font-bold tracking-tight mb-1">{title}</h2>
+=======
+            <h2 className="text-2xl font-bold tracking-tight mb-1 text-gray-600 dark:text-gray-300">{title}</h2>
+>>>>>>> light-mode-bug
             <p className="text-sm text-gray-600 dark:text-gray-300 mb-6">Great match! Want to play another round?</p>
 
             <div className="flex justify-center gap-3">
@@ -84,7 +88,11 @@ export default function WinnerOverlay({ open, winner, draw, onRestart, onClose }
               <button
                 type="button"
                 onClick={onClose}
+<<<<<<< HEAD
                 className="rounded-lg px-3 py-2 text-sm font-medium border border-gray-300/70 hover:bg-gray-100 dark:hover:bg-neutral-800/60 transition-colors"
+=======
+                className="rounded-lg px-3 py-2 text-sm font-medium border border-gray-300/90 hover:bg-gray-100 dark:hover:bg-neutral-800/60 transition-colors text-gray-600 dark:text-gray-300"
+>>>>>>> light-mode-bug
               >
                 Keep viewing
               </button>
